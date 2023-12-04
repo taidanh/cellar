@@ -1,2 +1,2 @@
-# cellar
-A simple script manager for Unix based systems.
+# Cellar
+Cellar is a simple script manager for Unix based systems.

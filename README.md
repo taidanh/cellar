@@ -1,11 +1,4 @@
-```
- _____      _ _             
-/  __ \    | | |            
-| /  \/ ___| | | __ _ _ __  
-| |    / _ \ | |/ _` | '__| 
-| \__/\  __/ | | (_| | |    
- \____/\___|_|_|\__,_|_|    
-```
+![cellar_banner](https://github.com/taidanh/cellar/assets/65222208/6224f5df-1c1d-4ce7-9ce7-6ba1aac91be0)
 Cellar is a simple script manager for Unix based systems.
 
 ## Installation

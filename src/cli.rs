@@ -1,18 +1,18 @@
-use clap::{Parser, Subcommand};
-
-#[derive(Parser)]
-#[command(name = "Cellar", about, author, version)]
-pub struct Cli {
-    #[command(subcommand)]
-    command: Commands,
-
-    #[arg(default_value_t = format!(""))]
-    path: String,
-}
+use clap::Subcommand;
 
 #[derive(Subcommand)]
 pub enum Commands {
     Add {
+        exe: String,
+    },
+
+    Run {
         command_name: String,
-    }
+    },
+
+    Remove {
+        command_name: String,
+    },
+
+    Init {},
 }

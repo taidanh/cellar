@@ -1,7 +1,7 @@
 use clap::Subcommand;
 
 #[derive(Subcommand)]
-pub enum Commands {
+pub enum CellarCommand {
     Add {
         exe: String,
     },

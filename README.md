@@ -12,7 +12,7 @@ Cellar is a simple script manager for Unix based systems.
    ```
 3. Initialize:
    ```bash
-   target/debug/cellar init
+   target/release/cellar init
    ```
 
 ## Usage

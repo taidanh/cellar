@@ -14,10 +14,17 @@ Cellar is a simple script manager for Unix based systems.
    ```bash
    target/release/cellar init
    ```
+4. Add Cellar to path
+   ```bash
+   export PATH="$HOME/.config/cellar/scripts:$PATH"
+   ```
+5. Add Cellar executable into path
+   ```bash
+   target/release/cellar add target/release/cellar
 
 ## Usage
 ```bash
-target/debug/cellar --help
+target/release/cellar --help
 ```
 
 ```

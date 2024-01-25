@@ -11,11 +11,11 @@ fn main() {
     let home: String = env::var("HOME").expect("Unable to head $HOME");
 
     match cli.command {
-        CellarCommand::Add { exe } => {
-            let command_name = Path::new(&exe)
+        CellarCommand::Add { executable } => {
+            let command_name = Path::new(&executable)
                 .file_name().expect("Unable to access executable")
                 .to_str().expect("Unable to read executable name").to_string();
-            let exe = fs::canonicalize(exe).expect("Unable to get absolute path to executable");
+            let exe = fs::canonicalize(executable).expect("Unable to get absolute path to executable");
             let to = format!("{}/.config/cellar/scripts/{}", home, command_name);
             let _ = fs::remove_file(&to);
             match cli.copy {
@@ -33,14 +33,14 @@ fn main() {
             fs::rename(from.clone(), to)
                 .expect(&format!("Error: {} does not exist.", from));
         },
-        CellarCommand::Run { command_name } => {
-            let output = Command::new(cellar_config(format!("/scripts/{}", command_name)))
+        CellarCommand::Run { executable } => {
+            let output = Command::new(cellar_config(format!("/scripts/{}", executable)))
                 .output()
                 .expect("Failed to execute command");
             println!("output: {}", String::from_utf8(output.stdout).expect("Failed to read output"));
         },
-        CellarCommand::Remove { command_name } => {
-            let _ = fs::remove_file(cellar_config(format!("/scripts/{}", command_name)));
+        CellarCommand::Remove { executable } => {
+            let _ = fs::remove_file(cellar_config(format!("/scripts/{}", executable)));
         },
         CellarCommand::Init {  } => {
             fs::create_dir_all(cellar_config("scripts"))

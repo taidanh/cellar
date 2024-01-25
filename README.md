@@ -28,19 +28,19 @@ target/release/cellar --help
 ```
 
 ```
-Usage: cellar [PATH] <COMMAND>
+Usage: cellar [OPTIONS] <COMMAND>
 
 Commands:
-  add     Adds a new executable
+  add     Adds a new executable from some path
+  rename  Gives an executable a new name
   run     Runs a specified command
   remove  Removes an existing command
   init    Initializes the configuration directory
   help    Print this message or the help of the given subcommand(s)
 
-Arguments:
-  [PATH]  [default: ]
-
 Options:
-  -h, --help     Print help
-  -V, --version  Print version
+  -p, --path <PATH>  [default: ]
+  -c, --copy         
+  -h, --help         Print help
+  -V, --version      Print version
 ```

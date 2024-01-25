@@ -7,8 +7,7 @@ pub enum CellarCommand {
     /// Arguments:
     ///     <exe> - The path to the executable to add
     Add {
-        #[arg(short, long, help = "Path to the executable to add")]
-        exe: String,
+        executable: String,
     },
 
     /// Gives an executable a new name
@@ -17,7 +16,6 @@ pub enum CellarCommand {
     ///     <from> - The old name for the executable
     ///     <to> - The new name for the executable
     Rename {
-        #[arg(short, long, help = "New name for the executable")]
         from: String,
         to: String,
     },
@@ -27,8 +25,7 @@ pub enum CellarCommand {
     /// Arguments:
     ///     <command_name> - Name of the command to run
     Run {
-        #[arg(short, long, help = "Name of the command to run")]
-        command_name: String,
+        executable: String,
     },
 
     /// Removes an existing command
@@ -36,8 +33,7 @@ pub enum CellarCommand {
     /// Arguments:
     ///     <command_name> - Name of the command to remove
     Remove {
-        #[arg(short, long, help = "Name of the command to remove")]
-        command_name: String,
+        executable: String,
     },
 
     /// Initializes the configuration directory

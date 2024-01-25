@@ -11,6 +11,17 @@ pub enum CellarCommand {
         exe: String,
     },
 
+    /// Gives an executable a new name
+    ///
+    /// Arguments:
+    ///     <from> - The old name for the executable
+    ///     <to> - The new name for the executable
+    Rename {
+        #[arg(short, long, help = "New name for the executable")]
+        from: String,
+        to: String,
+    },
+
     /// Runs a specified command
     ///
     /// Arguments:

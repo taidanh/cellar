@@ -8,10 +8,10 @@ mod cli;
 
 fn main() {
     let cli = Cli::parse();
+    let home: String = env::var("HOME").expect("Unable to head $HOME");
 
     match cli.command {
         CellarCommand::Add { exe } => {
-            let home = env::var("HOME").expect("Unable to read $HOME");
             let command_name = Path::new(&exe)
                 .file_name().expect("Unable to access executable")
                 .to_str().expect("Unable to read executable name").to_string();
@@ -25,8 +25,13 @@ fn main() {
                 false => {
                     let _ = symlink(exe,to).expect("Error symlinking executable");
                 },
-
             };
+        },
+        CellarCommand::Rename { from, to} => {
+            let from = cellar_config(format!("/scripts/{}", from));
+            let to = cellar_config(format!("/scripts/{}", to));
+            fs::rename(from.clone(), to)
+                .expect(&format!("Error: {} does not exist.", from));
         },
         CellarCommand::Run { command_name } => {
             let output = Command::new(cellar_config(format!("/scripts/{}", command_name)))
